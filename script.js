@@ -19,10 +19,6 @@ function divide(a,b){
     }
 }
 
-let num1;
-let num2;
-let op;
-
 function operate(num1,num2,op){
 
     if(op==='+'){
@@ -43,23 +39,39 @@ function operate(num1,num2,op){
 
 }
 
-display=document.querySelector(".display");
+let display=document.querySelector(".display");
 
-numbers=document.querySelectorAll('.number');
+let numbers=document.querySelectorAll('.number');
 numbers.forEach(element => {
     element.addEventListener('click', function() {
         display.innerText+=element.innerText;
     });
 });
 
-clear=document.querySelector(".clear");
+let clear=document.querySelector(".clear");
 clear.addEventListener('click',()=>{
     display.innerText='';
 });
 
-operators=document.querySelectorAll(".operator");
+let operators=document.querySelectorAll(".operator");
 operators.forEach(element => {
     element.addEventListener('click', function() {
         display.innerText+=element.innerText;
     });
+});
+
+let oper= ['+','-','*','/'];
+
+let equals=document.querySelector(".equals");
+equals.addEventListener('click',()=>{
+    let str=display.innerText;
+    for(i=0;i<str.length;i++){
+        if(oper.includes(str[i])===true ){
+            op=str[i];
+            let arr=str.split(op);
+            result=operate(Number(arr[0]),Number(arr[1]),op);
+            break;
+        }
+    }
+    display.innerText=result;
 });
