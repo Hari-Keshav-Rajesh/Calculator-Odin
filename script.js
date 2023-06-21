@@ -24,17 +24,42 @@ let num2;
 let op;
 
 function operate(num1,num2,op){
+
     if(op==='+'){
         return add(num1,num2);
     }
+
     else if(op==='-'){
         return subtract(num1,num2);
     }
+
     else if(op==='*'){
         return multiply(num1,num2);
     }
+
     else if(op==='/'){
         return divide(num1,num2);
     }
 
 }
+
+display=document.querySelector(".display");
+
+numbers=document.querySelectorAll('.number');
+numbers.forEach(element => {
+    element.addEventListener('click', function() {
+        display.innerText+=element.innerText;
+    });
+});
+
+clear=document.querySelector(".clear");
+clear.addEventListener('click',()=>{
+    display.innerText='';
+});
+
+operators=document.querySelectorAll(".operator");
+operators.forEach(element => {
+    element.addEventListener('click', function() {
+        display.innerText+=element.innerText;
+    });
+});
